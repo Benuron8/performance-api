@@ -524,7 +524,7 @@
         <hashTree/>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group 3: Sustained Load ">
-        <stringProp name="TestPlan.comments">Constant load over an extended period of time</stringProp>
+        <stringProp name="TestPlan.comments">Constant load over an extended period</stringProp>
         <intProp name="ThreadGroup.num_threads">100</intProp>
         <intProp name="ThreadGroup.ramp_time">120</intProp>
         <longProp name="ThreadGroup.duration">3600</longProp>
