@@ -53,10 +53,9 @@
       </HeaderManager>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group 1: Concurrent Users" enabled="false">
-        <stringProp name="TestPlan.comments">Multiple users accessing the service simultaneously 100 users with a 10min duration</stringProp>
+        <stringProp name="TestPlan.comments">Multiple users accessing the service simultaneously 100 users</stringProp>
         <intProp name="ThreadGroup.num_threads">100</intProp>
         <intProp name="ThreadGroup.ramp_time">20</intProp>
-        <longProp name="ThreadGroup.duration">600</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
@@ -278,13 +277,11 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group 2: Short Peak Handling ">
-        <stringProp name="TestPlan.comments">Gradual increase in load to simulate peak usage of the service (500 users sending requests over a 5 min period</stringProp>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group 2: Short Peak Handling " enabled="false">
+        <stringProp name="TestPlan.comments">Gradual increase in load to simulate peak usage of the service (500 users sending requests with a 30 sec ramp up period)</stringProp>
         <intProp name="ThreadGroup.num_threads">500</intProp>
         <intProp name="ThreadGroup.ramp_time">30</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
           <stringProp name="LoopController.loops">1</stringProp>
@@ -505,7 +502,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group 3: Sustained Load " enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group 3: Sustained Load ">
         <stringProp name="TestPlan.comments">Constant load over an extended period. 100 users gradually starting over 2 min running for 30 min</stringProp>
         <intProp name="ThreadGroup.num_threads">100</intProp>
         <intProp name="ThreadGroup.ramp_time">120</intProp>
@@ -519,7 +516,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET movie/top_rated" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET movie/top_rated">
           <stringProp name="TestPlan.comments">Service to get the top rated movies</stringProp>
           <stringProp name="HTTPSampler.path">/3/movie/top_rated</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -731,18 +728,18 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
           <stringProp name="ConstantTimer.delay">1000</stringProp>
           <stringProp name="TestPlan.comments">Mimic the time a user would realistically wait between actions (send requests)</stringProp>
         </ConstantTimer>
         <hashTree/>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <doubleProp>
             <name>throughput</name>
             <value>100.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
-          <intProp name="calcMode">0</intProp>
+          <intProp name="calcMode">1</intProp>
           <stringProp name="TestPlan.comments">This timer helps maintaining a steady rate of requests over time</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
